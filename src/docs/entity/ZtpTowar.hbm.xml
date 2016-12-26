@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-26 16:47:05 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="docs.entity.ZtpTowar" table="ztp_towar" catalog="sakila" optimistic-lock="version">
+        <id name="idT" type="java.lang.Integer">
+            <column name="id_t" />
+            <generator class="identity" />
+        </id>
+        <property name="nazwa" type="string">
+            <column name="nazwa" length="45" not-null="true" />
+        </property>
+        <property name="cena" type="big_decimal">
+            <column name="cena" precision="10" not-null="true" />
+        </property>
+        <property name="ilosc" type="int">
+            <column name="ilosc" not-null="true" />
+        </property>
+        <property name="vat" type="big_decimal">
+            <column name="vat" precision="4" not-null="true" />
+        </property>
+        <set name="ztpZTs" table="ztp_z_t" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_t" not-null="true" />
+            </key>
+            <one-to-many class="docs.entity.ZtpZT" />
+        </set>
+    </class>
+</hibernate-mapping>

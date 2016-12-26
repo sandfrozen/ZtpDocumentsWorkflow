@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-26 16:47:05 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="docs.entity.ZtpZT" table="ztp_z_t" catalog="sakila" optimistic-lock="version">
+        <id name="id" type="string">
+            <column name="id" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="ztpTowar" class="docs.entity.ZtpTowar" fetch="select">
+            <column name="id_t" not-null="true" />
+        </many-to-one>
+        <many-to-one name="ztpZamowienie" class="docs.entity.ZtpZamowienie" fetch="select">
+            <column name="id_z" not-null="true" />
+        </many-to-one>
+        <property name="ilosc" type="int">
+            <column name="ilosc" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-12-26 16:47:05 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="docs.entity.ZtpKlient" table="ztp_klient" catalog="sakila" optimistic-lock="version">
+        <id name="idK" type="int">
+            <column name="id_k" />
+            <generator class="assigned" />
+        </id>
+        <property name="imie" type="string">
+            <column name="imie" length="45" not-null="true" />
+        </property>
+        <property name="nazwisko" type="string">
+            <column name="nazwisko" length="45" not-null="true" />
+        </property>
+        <property name="nazwa" type="string">
+            <column name="nazwa" length="45" />
+        </property>
+        <property name="nip" type="long">
+            <column name="nip" precision="10" scale="0" not-null="true" />
+        </property>
+        <set name="ztpZamowienies" table="ztp_zamowienie" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_k" not-null="true" />
+            </key>
+            <one-to-many class="docs.entity.ZtpZamowienie" />
+        </set>
+    </class>
+</hibernate-mapping>
